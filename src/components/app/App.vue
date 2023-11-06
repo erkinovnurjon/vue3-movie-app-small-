@@ -1,11 +1,14 @@
 <template>
-  <div class="app">
-    <div class="content">
+  <div class="app font-monospace">
+    <div class="content ">
 
       <AppInfo />
       <div class="search-panel">
          <SearchPanel />
+         <AppFilter />
       </div>
+      <MovieListForm />
+      <MovieAddForm />
     </div>
     
   </div>
@@ -14,11 +17,18 @@
 
 <script>
   import AppInfo from "../app-info/AppInfo.vue";
+  import AppFilter from "../app-filter/AppFilter.vue"
   import SearchPanel from "../search-panel/SearchPanel.vue"
+  import  MovieAddForm from "../movie-add-form/MovieAddForm.vue"
+  import MovieListForm  from "../movie-list-form/MovieListForm.vue"
 export default {
   components : {
     AppInfo,
     SearchPanel,
+    AppFilter,
+    MovieListForm,
+    MovieAddForm,
+
   }
 }
 
