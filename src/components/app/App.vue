@@ -2,12 +2,12 @@
   <div class="app font-monospace">
     <div class="content ">
 
-      <AppInfo />
+      <AppInfo :allMoviesCount="movies.length" :favouriteMoviesCount="movies.filter((c) => (c.favourite)).length" />
       <div class="search-panel">
          <SearchPanel />
          <AppFilter />
       </div>
-      <MovieListForm />
+      <MovieListForm :movies="movies" />
       <MovieAddForm />
     </div>
     
@@ -29,7 +29,31 @@ export default {
     MovieListForm,
     MovieAddForm,
 
-  }
+  },
+  data(){
+      return{
+            movies:[
+                  {
+                        name:"Omar ",
+                        viewers:811,
+                        favourite:true,
+                        like:true,
+                  },
+                  {
+                        name:"Empire of USman ",
+                        viewers:746,
+                        favourite:false,
+                        like:false,
+                  },
+                  {
+                        name:"Ertugrul ",
+                        viewers:689,
+                        favourite:false,
+                        like:false,
+                  },
+            ]
+      }
+    }
 }
 
 
