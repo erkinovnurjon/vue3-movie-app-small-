@@ -1,10 +1,10 @@
 <template >
-      <div class="movie-add-form">
+      <div class="movie-add-form" @submit.prevent>
           <h3>Yangi kino qo'shish</h3>
           <form class="add-form d-flex">
-            <input type="text" class="form-control new-movie-label" placeholder="Qanday kino?">
-            <input type="text" class="form-control new-movie-label" placeholder="Nechi marotaba ko'rilgan?">
-            <button class="btn btn-outline-dark">
+            <input type="text" class="form-control new-movie-label" placeholder="Qanday kino?" :value="name" @input="name = $event.target.value">
+            <input type="text" class="form-control new-movie-label" placeholder="Nechi marotaba ko'rilgan?" :value="viewers" @input="viewers = $event.target.value">
+            <button class="btn btn-outline-dark" @click="addMovie">
                 Qo'shish
             </button>
           </form>
@@ -12,6 +12,28 @@
 </template>
 <script>
 export default {
+    data(){
+        return{
+            name:'',
+            viewers:'',
+        }
+    },
+    methods:{
+        addMovie(){
+                const newMovie = {
+                name:this.name,
+                viewers:this.viewers,
+                like:false,
+                favourite:false,
+                id:Date.now()
+            }
+            this.$emit('createMovie' , newMovie)
+            this.name="",
+            this.viewers=""
+        }
+    }
+    
+    
       
 }
 </script>

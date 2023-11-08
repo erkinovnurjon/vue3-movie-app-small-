@@ -8,7 +8,7 @@
          <AppFilter />
       </div>
       <MovieListForm :movies="movies" />
-      <MovieAddForm />
+      <MovieAddForm  @createMovie="createMovie" />
     </div>
     
   </div>
@@ -38,20 +38,28 @@ export default {
                         viewers:811,
                         favourite:true,
                         like:true,
+                        id:1,
                   },
                   {
                         name:"Empire of USman ",
                         viewers:746,
                         favourite:false,
                         like:false,
+                        id:2,
                   },
                   {
                         name:"Ertugrul ",
                         viewers:689,
                         favourite:false,
                         like:false,
+                        id:3,
                   },
             ]
+      }
+    },
+    methods:{
+      createMovie(item){
+        this.movies.push(item)
       }
     }
 }
