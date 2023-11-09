@@ -7,7 +7,7 @@
          <SearchPanel />
          <AppFilter />
       </div>
-      <MovieListForm :movies="movies" />
+      <MovieListForm :movies="movies" @onToggle="onToggleHandler"  />
       <MovieAddForm  @createMovie="createMovie" />
     </div>
     
@@ -60,8 +60,17 @@ export default {
     methods:{
       createMovie(item){
         this.movies.push(item)
-      }
-    }
+      },
+      onToggleHandler({id,prop}){
+        this.movies = this.movies.map((item) => {
+          if(item.id == id){
+            return {...item , [prop]: !item[prop]}
+          }
+          return item
+        })
+      },
+      
+    },
 }
 
 
