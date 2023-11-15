@@ -4,7 +4,7 @@
       <AppInfo :allMoviesCount="movies.length" :favouriteMoviesCount="movies.filter((c) => c.favourite).length" />
       <div class="search-panel">
         <SearchPanel :upDateTermHandler="upDateTermHandler" />
-        <AppFilter  :updateFilterHandler="updateFilterHandler" />
+        <AppFilter  :updateFilterHandler="updateFilterHandler" :filterName="filter" />
       </div>
       <MovieListForm
         :movies="onFilterHandler(onSearchHandler(movies , term) , filter)"
@@ -57,7 +57,7 @@ export default {
         },
       ],
       term: "",
-      filter: "all",
+      filter: 'all',
     };
   },
   
@@ -83,20 +83,20 @@ export default {
       return arr.filter((c) => c.name.toLowerCase().indexOf(term.toLowerCase()) > -1);
     },
     onFilterHandler(arr, filter) {
-      switch (filter) {
-        case "popular":
-          return arr.filter((c) => c.like);
-        case "mostViewers":
-          return arr.filter((c) => c.viewers > 500);
-        default:
-          return arr;
-      }
+			switch (filter) {
+				case 'popular':
+					return arr.filter(c => c.like)
+				case 'mostViewers':
+					return arr.filter(c => c.viewers > 500)
+				default:
+					return arr
+			}
+		},
+    updateFilterHandler(filter){
+      this.filter = filter
     },
     upDateTermHandler(term) {
       this.term = term;
-    },
-    updateFilterHandler(filter){
-      this.filter = filter
     },
     
   },
