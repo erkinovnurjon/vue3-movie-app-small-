@@ -79,8 +79,14 @@ export default {
     };
   },
   methods: {
-    createMovie(item) {
-      this.movies.push(item);
+    async createMovie(item) {
+      try {
+        const response = await axios.post('https://jsonplaceholder.typicode.com/posts' , item)
+        this.movies.push(response.data);
+        
+      } catch (error) {
+        alert(error.message)
+      }
     },
     onToggleHandler({ id, prop }) {
       this.movies = this.movies.map((item) => {
@@ -90,8 +96,14 @@ export default {
         return item;
       });
     },
-    onRemoveHandler(id) {
-      this.movies = this.movies.filter((c) => c.id !== id);
+    async onRemoveHandler(id) {
+      try {
+        const response = await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        this.movies = this.movies.filter((c) => c.id !== id);
+        
+      } catch (error) {
+        alert(error.message)
+      }
     },
     upDateTermHandler(term) {
       this.term = term;

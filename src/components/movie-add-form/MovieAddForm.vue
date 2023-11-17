@@ -37,7 +37,6 @@ export default {
                 viewers:this.viewers,
                 like:false,
                 favourite:false,
-                id:Date.now()
             }
             this.$emit('createMovie' , newMovie)
             this.name="",
