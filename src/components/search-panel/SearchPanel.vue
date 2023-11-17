@@ -1,31 +1,33 @@
 <template >
-      <input type="text"
-      :value="term"
-      class="form-control search-input"
+  <Input  v-model="term"
+      class=" search-input"
       placeholder="kinolarni qidirish"
-      @input="changeHandler">
+      @input="changeHandler" />
+      
 </template>
 
 <script>
+import Input from '@/ui-component/Input.vue';
+
 export default {
-  props:{
-    upDateTermHandler:{
-      type:Function,
-      required : true,
+    props: {
+        upDateTermHandler: {
+            type: Function,
+            required: true,
+        },
     },
-  },
-  data() {
-    return {
-      term:'',
-    }
-  },
-  methods: {
-    changeHandler(e){
-      this.term = e.target.value
-      this.upDateTermHandler(this.term)
+    data() {
+        return {
+            term: "",
+        };
     },
-  }
-      
+    methods: {
+        changeHandler(e) {
+            this.term = e.target.value;
+            this.upDateTermHandler(this.term);
+        },
+    },
+    components: { Input }
 }
 </script>
 <style scoped>

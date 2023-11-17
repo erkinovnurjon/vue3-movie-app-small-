@@ -1,6 +1,6 @@
 <template>
-	<div class="spinner-border" role="status">
-		<span class="visually-hidden">Loading...</span>
+	<div class="spinner">
+
 	</div>
 </template>
 
@@ -10,4 +10,22 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>

@@ -1,16 +1,22 @@
 <template >
-      <div class="movie-add-form" @submit.prevent>
+      <Box  @submit.prevent>
           <h3>Yangi kino qo'shish</h3>
           <form class="add-form d-flex">
-            <input type="text" class="form-control new-movie-label" placeholder="Qanday kino?" :value="name" @input="name = $event.target.value">
-            <input type="text" class="form-control new-movie-label" placeholder="Nechi marotaba ko'rilgan?" :value="viewers" @input="viewers = $event.target.value">
-            <button class="btn btn-outline-dark" @click="addMovie">
+            <Input class="new-movie-label"  placeholder="Qanday kino?" v-model="name" />
+            <Input class="new-movie-label" placeholder="Nechi marotaba ko'rilgan?" v-model="viewers" type="number" />
+          
+           
+            <PrimaryButton class=" btn-outline-dark" @click="addMovie">
                 Qo'shish
-            </button>
+            </PrimaryButton>
           </form>
-      </div>
+      </Box>
 </template>
 <script>
+import PrimaryButton from '@/ui-component/PrimaryButton.vue'
+import Box from '../../ui-component/Box.vue'
+import Input from '../../ui-component/Input.vue'
+
 export default {
     data(){
         return{
@@ -18,6 +24,11 @@ export default {
             viewers:'',
         }
     },
+    components:{
+    PrimaryButton,
+    Box,
+    Input
+},
     methods:{
         addMovie(){
             if(!this.name || !this.viewers) return
